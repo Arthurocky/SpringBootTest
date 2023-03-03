@@ -4,6 +4,7 @@ import com.config.MyImportBeanDefinitionRegistrar;
 import com.itheima.pojo.Role;
 import com.itheima.pojo.User;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
@@ -88,6 +89,17 @@ pojo:在com.itheima.pojo下创建
         //
         User user = context.getBean(User.class);
         Role role = context.getBean(Role.class);
+
+ */
+
+
+//1.4 @EnableAutoConfiguration
+/*
+
+1.@import注解 导入配置     ---> @Import(AutoConfigurationImportSelector.class)
+2.selectImports导入类中的方法中加载配置返回Bean定义的字符数组
+3.加载META-INF/spring.factories 中获取Bean定义的全路径名返回
+4.最终返回回去即可
 
  */
 
