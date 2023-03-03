@@ -1,6 +1,8 @@
 package com.itheima;
 
 import com.config.MyImportBeanDefinitionRegistrar;
+import com.itheima.pojo.Role;
+import com.itheima.pojo.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -19,6 +21,8 @@ import org.springframework.context.annotation.Import;
 //@Import(UserConfig.class)
 //3.2 直接导入bean 一般不用
 //3.3 导入了ImportSelector的实现类 有从外部配置文件中加载的需求才使用这个方式
+
+
 //@Import(MyImportSelector.class)
 //3.4 导入了ImportBeanDefinitionRegistrar的实现类 是需要手动的进行创建一个对象叫gei spring容器需求采用。
 @Import(MyImportBeanDefinitionRegistrar.class)
@@ -33,6 +37,7 @@ public class Demo2Application {
         System.out.println(user);
     }
 }
+
 //1.定义两个工程demo2 demo3 demo3中有bean
 //2.demo2依赖了demo3
 //3.我们希望demo2直接获取加载demo3中的bean
@@ -70,9 +75,19 @@ pojo:在com.itheima.pojo下创建
 实现优化加载第三bean
 （1）在demo03中com.config下创建一个自定义注解@EnableUser：
 （2）在demo2中Demo2Application使用该注解即可
+ */
 
 
+//ImportSector实现类方式
+/*
 
+在demo3工程中定义类  --》MyImportSelector
+定义POJO:
+在demo2中修改导入：
+        @Import(MyImportSelector.class)
+        //
+        User user = context.getBean(User.class);
+        Role role = context.getBean(Role.class);
 
  */
 
